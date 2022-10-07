@@ -5,6 +5,8 @@
  * 1. Introduction to Java helpful.
  */
 
+import java.util.ArrayList;
+
 public abstract class Bag {
     /*
      * TODO: Create the following private instance variables
@@ -13,9 +15,11 @@ public abstract class Bag {
      *       - an int named capacity
      *       - an array of Strings named contents
      */
+    private String color;
+    private int numberOfContents;
+    private int capacity;
 
-
-
+    private ArrayList<String> contents;
 
     /*
      * TODO: Create a constructor that takes two arguments:
@@ -27,7 +31,13 @@ public abstract class Bag {
      * its contents.)
      */
 
+    public Bag (String color, int capacity) {
 
+        this.color = color;
+        this.capacity = capacity;
+        this.numberOfContents = 0;
+        this.contents = new ArrayList<>();
+    }
 
 
     /*
@@ -37,8 +47,11 @@ public abstract class Bag {
      *           - getNumberOfContents
      *           - getCapacity
      */
+    public String getColor(){return this.color;}
 
+    public int getNumberOfContents(){ return this.numberOfContents;}
 
+    public int getCapacity(){return this.capacity;}
 
 
     /*
@@ -46,9 +59,7 @@ public abstract class Bag {
      *       color of this bag to the given color.
      */
 
-
-
-
+    public void setColor(String c) {this.color= c;}
 
     /*
      * TODO: Create a method called addItem that takes in a String
@@ -61,23 +72,34 @@ public abstract class Bag {
      *       and false otherwise.
      */
 
+    public boolean addItem(String item){
 
+        if(this.numberOfContents < this.capacity){
+            this.numberOfContents += 1;
+            this.contents.add(item);
+            return true;
 
+        } else{return false;}
+    }
 
-
-    /**
+    /*
      * TODO: Create a method called popItem that returns a String.
      *       The string should be the last item added to this Bag
      *       and the item should be removed from this Bag.
      *       Remember to modify numberOfContents accordingly.
-     *
      * If there are no items in this Bag, return null.
      *
      * @return
      */
+    public String popItem(){
 
+        if(this.numberOfContents != 0){
+        String item = this.contents.remove(this.numberOfContents - 1);
+        this.numberOfContents -= 1;
+        return item;}
 
-
+        return null;
+    }
 
 
     /**
@@ -87,6 +109,7 @@ public abstract class Bag {
      */
     public void increaseCapacity(int n) {
         // TODO: Implement this method.
+        this.capacity += n;
 
     }
 
