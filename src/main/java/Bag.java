@@ -36,7 +36,7 @@ public abstract class Bag {
         this.color = color;
         this.capacity = capacity;
         this.numberOfContents = 0;
-        this.contents = new ArrayList<>();
+        this.contents = new ArrayList<>(500);
     }
 
 
@@ -118,7 +118,7 @@ public abstract class Bag {
      * This method requires you to have created the private
      * instance variables mentioned above.
      *
-     * @return
+     * @return returns string
      */
     @Override
     public String toString() {
